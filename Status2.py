@@ -24,29 +24,6 @@ def retrieve_data():
         if con:
             con.close()
 
-# def delete_item():
-#     try:
-#         selected_item = tree.selection()[0]
-#         tree.delete(selected_item)
-
-#         con = sqlite3.connect('Status2.db')
-#         c = con.cursor()
-
-#         # Get the ID of the selected item
-#         selected_id = tree.item(selected_item)['values'][0]
-
-#         # Execute a DELETE query to remove data from the table
-#         c.execute("DELETE FROM data WHERE ID=?", (selected_id,))
-
-#         # Commit the changes
-#         con.commit()
-
-#     except Exception as e:
-#         print('Error:', e)
-
-#     finally:
-#         if con:
-#             con.close()
 
 def on_status_click():
     tree.delete(*tree.get_children())  # Clear existing data
@@ -71,14 +48,10 @@ def edit():
     c.execute("SELECT * FROM data WHERE  ID=?",(record_id,))
     records= c.fetchall()
     
-    # global NameEnt
-    # global ContEnt
+   
     global DatEnt
     global TimEnt
-    # NameEnt = Entry(editor, width=30)
-    # NameEnt.grid(row=0, column=1, padx=20, pady=(10, 0))
-    # ContEnt = Entry(editor, width=30)
-    # ContEnt.grid(row=0, column=1, padx=20, pady=(10, 0))
+ 
     DatEnt = Entry(editor, width=30)
     DatEnt.grid(row=0, column=1, padx=20, pady=(10, 0))
     TimEnt = Entry(editor, width=30)
