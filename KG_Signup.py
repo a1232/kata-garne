@@ -7,6 +7,8 @@ def chec():
         messagebox.showerror("Error!", "Every field must be filled!")
     elif "@gmail.com" not in en1.get():
         messagebox.showerror("Fault!", "The E-mail must contain '@gmail.com'")
+    elif len(en3.get())!=10:
+        messagebox.showerror("Warning!", "Please enter a valid Phone Number (10 digits)")
     elif tc.get() == 0:
         messagebox.showwarning("Warning!", "Terms & Condition not agreed")
     else:
@@ -59,6 +61,9 @@ def tac():
 
 def tcd2():
     import termsandcondition
+def prev():
+    Kg2.destroy()
+    import portal
 
 Kg2 = Tk()
 Kg2.title("Kata Garne? Signup")
@@ -93,8 +98,7 @@ U.place(x=360, y=530)
 tcd=IntVar()
 tcd1= Button(Kg2,text="Read terms & condition", font=('helvetica',7,'italic'),bg="#FFFFFF",fg="#0A1D56",command=tcd2)
 tcd1.place(x=430,y=490)
-
-label = Label(Kg2, text='')
-label.pack()
+back_but=Button(Kg2,text='<Back',font=('Helvetica',14),command=prev)
+back_but.place(x=10,y=20)
 
 Kg2.mainloop()
