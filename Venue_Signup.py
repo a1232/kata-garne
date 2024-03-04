@@ -31,9 +31,10 @@ def go():
             cur = con.cursor()
 
             # table
-            cur.execute('''CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR(50), password VARCHAR(20), cont VARCHAR(10), pan VARCHAR(20), location VARCHAR(20) )''')
+            cur.execute('''CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR(50), password VARCHAR(20),
+                         cont VARCHAR(10), pan VARCHAR(20), location VARCHAR(20) )''')
 
-            # check if email already exists
+            # checking email already exists
             location=oe5.get()
             email = oe1.get()
             contact = oe3.get()
@@ -59,9 +60,6 @@ def show_login_window():
     import KG_venuelog
     KG_venuelog.show_login_window()
 
-
-
-
 owner_mail = Label(vs, text="E-mail:", font=('helvetica', 17, 'bold'), bg="#FFFFFF").place(x=180, y=190)
 oe1 = Entry(vs, width=30, font=("helvetica", 12, 'italic'), bg="#F5EEE6")
 oe1.place(x=270, y=198)
@@ -84,14 +82,9 @@ termscon= Checkbutton(vs,text="I agree to the Terms & Conditions*", width=30, fo
 termscon.place(x=280, y=550)
 si_v=Button(vs, text="Signup", width=25, font=("helvetica", 12, 'italic'),command=go)
 si_v.place(x=280, y=575)
-
-
-
-
-
-
-
-
-
-
+def prev():
+    vs.destroy()
+    import portal
+back_but=Button(vs,text='<Back',font=('Helvetica',14),command=prev)
+back_but.place(x=10,y=20)
 vs.mainloop()
