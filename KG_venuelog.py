@@ -12,7 +12,10 @@ vl.minsize(width=1240,height=720)
 def verify_venue():
     email = Entry1.get()
     password = Entry2.get()
-    try:
+    if email=="" or password=="":
+        messagebox.showerror("Warning!","All fields must be filled out.")
+    else:
+     try:
         conI = sqlite3.connect("Venuedata.db")
         curI = conI.cursor()
         curI.execute("CREATE TABLE IF NOT EXISTS data(email TEXT, password TEXT)")
@@ -22,15 +25,21 @@ def verify_venue():
             stored_password = curI.execute("SELECT password FROM data WHERE password=?", [password]).fetchone()
             if stored_password and stored_password[0] == password:
                 messagebox.showinfo("Verification", "Login successful!")
-                vl.destroy()
-                import new
+                if email=="Classicvenue@gmail.com":
+                 vl.destroy()
+                 import Status
+                elif email=="Thapapp@gmail.com":
+                    vl.destroy()
+                    import Status2
+                elif email=="sasa@gmail.com":
+                    import Status3
             else:
                 messagebox.showerror("Verification", "Invalid Password")
         else:
             messagebox.showerror("Verification", "Invalid email")
         conI.commit()
         conI.close()
-    except Exception as e:
+     except Exception as e:
         messagebox.showerror("Verification", f"Error: {e}")
 
 v_mail= Label(vl, text="E-mail:",font=('helvetica',18,'bold'),bg='#f8f5ee')
@@ -51,9 +60,13 @@ showPH=Checkbutton(vl,text="Show Password",width=15, font=("helvetica", 12, 'ita
 showPH.place(x=900,y=330)
 Update=Button(vl,text="Login",width=25,font=('helvetica',10,'bold'),command=verify_venue).place(x=870,y=380)
 
-war=Label(vl,text="By Logging in into 'KATA GARNE?' you agree that \n You and only you are responsible for changes made to the account",font=('helvetica', 10, 'bold'), bg="#f8f5ee").place(x=750, y=450)
-
-
+war=Label(vl,text="By Logging in into 'KATA GARNE?' you agree that \n You and only you are responsible for changes made to the account",font=('helvetica', 10, 'bold'), bg="#f8f5ee")
+war.place(x=750, y=450)
+def prev():
+    vl.destroy()
+    import portal
+back_but=Button(vl,text='<Back',font=('Helvetica',14),command=prev)
+back_but.place(x=10,y=20)
 
 
 vl.mainloop()
